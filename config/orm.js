@@ -13,8 +13,8 @@ var orm = {
     create: function(table, colVal, cb){
         var queryString = "INSERT INTO " + table + " (name) ";
 
-        queryString += " VALUE ";
-        queryString += "?";
+        queryString += "VALUE ";
+        queryString += "(?)";
 
         connection.query(queryString, [colVal], function(err, result) {
             if(err) throw err;

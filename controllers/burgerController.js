@@ -17,7 +17,10 @@ router.get("/api", function(req, res) {
 });
 
 router.post("/api", function (req, res) { //create form for posting
-    food_place.create(["name"], [req.body.name], function(req, res) {
+    food_place.create([req.body.name], function(result) {
         res.json({ id: result.insertId });
     });
 });
+
+// Export routes for server.js to use.
+module.exports = router;
