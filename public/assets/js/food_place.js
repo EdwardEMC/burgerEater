@@ -18,4 +18,43 @@ $(function() {
             location.reload();
         });
     });
+
+    $(".delete-burger").on("click", function(event) {
+        var id = $(this).data("id");
+
+        $.ajax("/api/" + id, {
+            type: "DELETE"
+        }).then(function() {
+            console.log("Burger has been deleted");
+
+            location.reload();
+        });
+    });
+
+    $(".devour").on("click", function(event) {
+        var id = $(this).data("id");
+        var devour = $(this).data("newdevour");
+        if(devour) {
+            devour = 0;
+        }
+        else {
+            devour = 1;
+        }
+        var newDevour = {
+            devoured: devour
+        };
+
+        $.ajax("/api/" + id, {
+            type: "PUT",
+            data: newDevour
+        }).then(function() {
+            if(devour) {
+                console.log("Burger has been added to waiting list");
+            }
+            else {
+                console.log("Burger has been devoured!");
+            }
+            location.reload();
+        });
+    });
 });

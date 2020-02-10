@@ -10,8 +10,17 @@ var food_place = {
         orm.create("burgers", colVal, function(result) {
             cb(result);
         });
+    },
+    update: function(deVal, idVal, cb) {
+        orm.update("burgers", deVal, idVal, function(result) {
+            cb(result);
+        });
+    },
+    delete: function(colVal, cb) {
+        orm.delete("burgers", [colVal], function(result) {
+            cb(result);
+        })
     }
-    //delete and update not needed.........yet
 }
 
 module.exports = food_place;
