@@ -16,13 +16,12 @@ router.get("/api", function(req, res) {
     });
 });
 
-router.post("/api", function(req, res) { //create form for posting
+router.post("/api", function(req, res) {
     food_place.create([req.body.name], function(result) {
         res.json({ id: result.insertId });
     });
 });
 
-// router.put(); for updating devour status
 router.put("/api/:id", function(req, res) {
     var id = req.params.id;
     food_place.update(req.body.devoured, id, function(result) {
